@@ -1,5 +1,8 @@
 # Xdebug Wrappers
 
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/tomasfejfar/xdebug-wrappers.svg)](http://isitmaintained.com/project/tomasfejfar/xdebug-wrappers "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/tomasfejfar/xdebug-wrappers.svg)](http://isitmaintained.com/project/tomasfejfar/xdebug-wrappers "Percentage of issues still open")
+
 Debugging CLI applications is a massive pain, because you usually don't have Xdebug enabled as it negatively affects performance of tools like `phpunit` or `composer`. You can enable xdebug inline in the command with `-d` argument. But not everyone is keen to remember obscure onliners. And you shouldn't! That's what Xdebug wrappers are for! 
 
 ## Instalation
