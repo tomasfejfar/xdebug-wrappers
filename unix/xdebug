@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -f "${HOME}/.config/xdebug-wrapper" ]; then
+    . "${HOME}/.config/xdebug-wrapper"
+fi
+
 # Update according to your needs
 PHP_BINARY=${PHP_BINARY:="php"}
 
