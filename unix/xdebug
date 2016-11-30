@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Update according to your needs
 XDEBUG_FILE=php_xdebug-2.4.0-7.0-vc14.dll
