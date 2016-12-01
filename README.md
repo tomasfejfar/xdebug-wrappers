@@ -8,10 +8,12 @@ Debugging CLI applications is a massive pain, because you usually don't have Xde
 ## Instalation
 
 * make sure you have xdebug correctly set up (see https://gist.github.com/tomasfejfar/4e8e27ece29b142a7ec7f54f4fa44872)
-* add appropriate wrapper batch/script to your path
-  * for windows use `windows/xdebug.bat`
-  * for linux and osx use `unix/xdebug`
-* update variables inside the wrapper file
+* add the executables to path
+  * UNIX: symlink `unix/xdebug` to your path
+  * WINDOWS: copy  `windows\xdebug.cmd` (NOT the `xdebug.bat`) to your path - you'll never need to update this file, not even when updating xdebug wrappers
+* (optional) create local config file
+  * UNIX: `~/.config/xdebug-wrapper`
+  * WINDOWS: `%UserProfile%\.config\xdebug_wrapper.bat`
 
 ## Usage in PhpStorm
 
