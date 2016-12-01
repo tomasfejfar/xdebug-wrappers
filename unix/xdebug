@@ -4,11 +4,10 @@ if [ -f "${HOME}/.config/xdebug-wrapper" ]; then
     . "${HOME}/.config/xdebug-wrapper"
 fi
 
-# Update according to your needs
 PHP_BINARY=${PHP_BINARY:="php"}
 
 if ! [ "${EXTENSION_PATH}" ]; then
-    EXTENSION_PATH=$(${PHP_BINARY} -i | awk '/^extension_dir => (.*)$/ { print $3 }')
+    EXTENSION_PATH=$(${PHP_BINARY} -r "echo ini_get('extension_dir');")
 fi
 
 XDEBUG_FILE=$(find -L "${EXTENSION_PATH}" -name '*xdebug*' | head)
@@ -19,5 +18,4 @@ fi
 
 XDEBUG_IDEKEY=${XDEBUG_IDEKEY:="PHPSTORM"}
 
-# No need to touch this
 $PHP_BINARY -dzend_extension="$XDEBUG_FILE" -dxdebug.idekey="${XDEBUG_IDEKEY}" "$@"
