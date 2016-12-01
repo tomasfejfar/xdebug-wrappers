@@ -1,11 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+if [ -f "${HOME}/.config/xdebug-wrapper" ]; then
+    . "${HOME}/.config/xdebug-wrapper"
+fi
 
 # Update according to your needs
-XDEBUG_FILE=php_xdebug-2.4.0-7.0-vc14.dll
-XDEBUG_PATH=/path/to/
-PHP_BINARY=/usr/bin/php
-XDEBUG_IDEKEY=PHPSTORM
+PHP_BINARY=${PHP_BINARY:="php"}
+
+if ! [ "${EXTENSION_PATH}" ]; then
+    EXTENSION_PATH=$(${PHP_BINARY} -i | awk '/^extension_dir => (.*)$/ { print $3 }')
+fi
+
+XDEBUG_FILE=$(find -L "${EXTENSION_PATH}" -name '*xdebug*' | head)
+if ! [ "${XDEBUG_FILE}" ]; then
+    echo "Xdebug not found in ${EXTENSION_PATH}"
+    exit 1
+fi
+
+XDEBUG_IDEKEY=${XDEBUG_IDEKEY:="PHPSTORM"}
 
 # No need to touch this
-export XDEBUG_CONFIG="idekey=$XDEBUG_IDEKEY"
-$PHP_BINARY -dzend_extension="$XDEBUG_PATH$XDEBUG_FILE" "$@"
+$PHP_BINARY -dzend_extension="$XDEBUG_FILE" -dxdebug.idekey="${XDEBUG_IDEKEY}" "$@"
