@@ -21,4 +21,4 @@ IF NOT DEFINED XDEBUG_FILE (
 
 rem Execute binary
 SET XDEBUG_CONFIG=idekey=%XDEBUG_IDEKEY%
-%PHP_BINARY% -dzend_extension="%EXTENSION_PATH%\%XDEBUG_FILE%" -dxdebug.idekey="%XDEBUG_IDEKEY%" %*
+%PHP_BINARY% -dzend_extension="%EXTENSION_PATH%\%XDEBUG_FILE%" -dxdebug.remote_enable=1 -dxdebug.idekey="%XDEBUG_IDEKEY%" %*
